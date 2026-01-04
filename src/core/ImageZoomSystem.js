@@ -7,9 +7,6 @@ export class ImageZoomSystem {
       isCompleteThreshold: 0.0000001,
     };
 
-    this.zoomInLocked = false;
-    this.zoomOutLocked = false;
-
     this.state = {
       isActive: false,
       isZoomingOut: false,
