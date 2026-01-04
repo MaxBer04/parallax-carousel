@@ -1,4 +1,4 @@
-import { StageAnimationSystem } from "./stage-animation-system.js";
+import { StageAnimationSystem } from "./StageAnimationSystem.js";
 
 export class ImageZoomSystem {
   constructor() {

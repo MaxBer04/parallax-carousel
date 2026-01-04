@@ -13,7 +13,3 @@ export { IndexAnimationSystem } from './core/IndexAnimationSystem.js';
 export { MiniSliderSystem } from './core/MiniSliderSystem.js';
 export { CrossAnimationSystem } from './core/CrossAnimationSystem.js';
 export { TitleAnimationSystem } from './core/TitleAnimationSystem.js';
-
-// Default export for convenience
-import { ParallaxCarousel as DefaultExport } from './core/ParallaxCarousel.js';
-export default DefaultExport;

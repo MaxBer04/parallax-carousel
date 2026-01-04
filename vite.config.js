@@ -17,6 +17,8 @@ export default defineConfig({
       // Externalize dependencies that shouldn't be bundled
       external: [],
       output: {
+        // Use named exports only to avoid warning
+        exports: 'named',
         // Global variables for UMD build
         globals: {}
       }
