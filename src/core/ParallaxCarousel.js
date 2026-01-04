@@ -24,7 +24,7 @@ export class ParallaxCarousel {
    * Default configuration
    */
   static defaultConfig = {
-    container: 'body',
+    container: "body",
 
     images: [],
 
@@ -70,8 +70,8 @@ export class ParallaxCarousel {
     },
 
     styling: {
-      backgroundColor: '#141414',
-      centerCrossColor: '#fdfdfddd',
+      backgroundColor: "#141414",
+      centerCrossColor: "#fdfdfddd",
       centerCrossLineWidth: 1.75,
       centerCrossLineLength: 11,
     },
@@ -83,7 +83,7 @@ export class ParallaxCarousel {
       onSlide: null,
       onInit: null,
       onDestroy: null,
-    }
+    },
   };
 
   constructor(userConfig = {}) {
@@ -141,7 +141,11 @@ export class ParallaxCarousel {
     const merged = { ...defaultConfig };
 
     for (const key in userConfig) {
-      if (userConfig[key] && typeof userConfig[key] === 'object' && !Array.isArray(userConfig[key])) {
+      if (
+        userConfig[key] &&
+        typeof userConfig[key] === "object" &&
+        !Array.isArray(userConfig[key])
+      ) {
         merged[key] = this.mergeConfig(defaultConfig[key] || {}, userConfig[key]);
       } else {
         merged[key] = userConfig[key];
@@ -156,7 +160,7 @@ export class ParallaxCarousel {
    */
   validateConfig() {
     if (!this.config.images || this.config.images.length === 0) {
-      throw new Error('ParallaxCarousel: images array is required and must not be empty');
+      throw new Error("ParallaxCarousel: images array is required and must not be empty");
     }
 
     // Validate each image has required properties
@@ -172,18 +176,22 @@ export class ParallaxCarousel {
    */
   async init() {
     if (this.state.isInitialized) {
-      console.warn('ParallaxCarousel: Already initialized');
+      console.warn("ParallaxCarousel: Already initialized");
       return;
     }
 
     // Get or create container
-    this.container = typeof this.config.container === 'string'
-      ? document.querySelector(this.config.container)
-      : this.config.container;
+    this.container =
+      typeof this.config.container === "string"
+        ? document.querySelector(this.config.container)
+        : this.config.container;
 
     if (!this.container) {
       throw new Error(`ParallaxCarousel: Container not found: ${this.config.container}`);
     }
+
+    // Add carousel container class for styling
+    this.container.classList.add("parallax-carousel-container");
 
     // Calculate dimensions
     this.calculateDimensions();
@@ -239,8 +247,8 @@ export class ParallaxCarousel {
    * Setup title container for title animations
    */
   setupTitleContainer() {
-    this.titleContainer = document.createElement('ul');
-    this.titleContainer.id = 'title-list';
+    this.titleContainer = document.createElement("ul");
+    this.titleContainer.id = "title-list";
     this.titleContainer.style.cssText = `
       position: absolute;
       top: 0;
@@ -255,7 +263,7 @@ export class ParallaxCarousel {
 
     // Create title elements for each image
     this.config.images.forEach((image) => {
-      const li = document.createElement('li');
+      const li = document.createElement("li");
       li.style.cssText = `
         position: absolute;
         left: 50%;
@@ -263,8 +271,8 @@ export class ParallaxCarousel {
         transform: translateX(-50%);
       `;
 
-      const titleDiv = document.createElement('div');
-      titleDiv.className = 'title';
+      const titleDiv = document.createElement("div");
+      titleDiv.className = "title";
       titleDiv.style.cssText = `
         font-size: 3.125vw;
         line-height: 4.2708vw;
@@ -273,9 +281,9 @@ export class ParallaxCarousel {
         pointer-events: none;
       `;
 
-      const titleLink = document.createElement('a');
-      titleLink.textContent = image.title || '';
-      titleLink.href = image.href || '#';
+      const titleLink = document.createElement("a");
+      titleLink.textContent = image.title || "";
+      titleLink.href = image.href || "#";
       titleLink.style.cssText = `
         display: block;
         color: inherit;
@@ -391,7 +399,7 @@ export class ParallaxCarousel {
     });
 
     const loadedImages = await Promise.all(imagePromises);
-    this.images = loadedImages.filter(img => img !== null);
+    this.images = loadedImages.filter((img) => img !== null);
 
     if (this.zoomSystem) {
       this.zoomSystem.initStageSystem(this.images.length);
@@ -402,7 +410,8 @@ export class ParallaxCarousel {
    * Calculate scroll boundaries
    */
   calculateBoundaries() {
-    const totalWidth = (this.images.length - 1) *
+    const totalWidth =
+      (this.images.length - 1) *
       (this.config.scaledDimensions.maskWidth + this.config.scaledDimensions.maskGap);
     this.state.minScroll = 0;
     this.state.maxScroll = totalWidth;
@@ -530,7 +539,10 @@ export class ParallaxCarousel {
       if (imageIndex !== -1 && !this.zoomSystem.state.isZoomingIn) {
         // Call custom callback if provided
         if (this.config.callbacks.onImageClick) {
-          const shouldZoom = this.config.callbacks.onImageClick(imageIndex, this.images[imageIndex]);
+          const shouldZoom = this.config.callbacks.onImageClick(
+            imageIndex,
+            this.images[imageIndex]
+          );
           if (shouldZoom === false) {
             this.state.isDragging = false;
             this.state.isPointerDown = false;
@@ -755,7 +767,8 @@ export class ParallaxCarousel {
 
     const maskCenter = maskX + this.config.scaledDimensions.maskWidth / 2;
     const distanceFromCenter = (maskCenter - centerX) / (window.innerWidth / 2);
-    const parallaxOffset = (extraWidth / 2) * distanceFromCenter * this.config.animations.parallaxStrength;
+    const parallaxOffset =
+      (extraWidth / 2) * distanceFromCenter * this.config.animations.parallaxStrength;
 
     return {
       x: maskX - extraWidth / 2 - parallaxOffset,
@@ -869,7 +882,12 @@ export class ParallaxCarousel {
     ) {
       const edgeDistance = this.state.velocity < 0 ? distanceToMin : distanceToMax;
       const edgeFactor = Math.max(0, edgeDistance / edgeZone);
-      damping = this.expDecay(this.config.animations.edgeDamping, this.config.animations.baseDamping, 1, edgeFactor);
+      damping = this.expDecay(
+        this.config.animations.edgeDamping,
+        this.config.animations.baseDamping,
+        1,
+        edgeFactor
+      );
     }
 
     this.state.velocity *= Math.pow(damping, dt);
@@ -939,7 +957,8 @@ export class ParallaxCarousel {
       const maskRect = this.getMaskRect(index);
 
       if (
-        maskRect.x + this.config.scaledDimensions.maskWidth < -this.config.animations.offScreenBuffer ||
+        maskRect.x + this.config.scaledDimensions.maskWidth <
+          -this.config.animations.offScreenBuffer ||
         maskRect.x > window.innerWidth + this.config.animations.offScreenBuffer
       ) {
         return;
@@ -1113,7 +1132,8 @@ export class ParallaxCarousel {
 
     // Calculate from position
     const position = this.state.smoothPosition;
-    const imageWidth = this.config.scaledDimensions.maskWidth + this.config.scaledDimensions.maskGap;
+    const imageWidth =
+      this.config.scaledDimensions.maskWidth + this.config.scaledDimensions.maskGap;
     return Math.round(position / imageWidth);
   }
 
@@ -1157,6 +1177,11 @@ export class ParallaxCarousel {
 
     if (this.titleContainer && this.titleContainer.parentNode) {
       this.titleContainer.parentNode.removeChild(this.titleContainer);
+    }
+
+    // Remove carousel container class
+    if (this.container) {
+      this.container.classList.remove("parallax-carousel-container");
     }
 
     this.state.isDestroyed = true;
