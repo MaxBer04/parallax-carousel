@@ -12,8 +12,9 @@
   ],
   "scripts": {
     "dev": "vite",
-    "build": "vite build && npm run build:types",
+    "build": "vite build && npm run build:types && npm run copy:css",
     "build:types": "echo 'TypeScript types generation placeholder'",
+    "copy:css": "cp src/styles/carousel.css dist/carousel.css",
     "preview": "vite preview",
     "prepublishOnly": "npm run build"
   },
