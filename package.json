@@ -1,6 +1,6 @@
 {
   "name": "@maxber04/parallax-carousel",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A canvas-based parallax image carousel with smooth animations and zoom functionality",
   "main": "dist/index.js",
   "module": "dist/index.esm.js",
