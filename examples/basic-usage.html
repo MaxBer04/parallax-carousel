@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Parallax Carousel - Basic Example</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: system-ui, -apple-system, sans-serif;
+      }
+
+      .parallax-carousel-container {
+        width: 100%;
+        height: 100vh;
+      }
+    </style>
+  </head>
+  <body class="parallax-carousel-fullpage">
+    <div id="carousel" class="parallax-carousel-container"></div>
+
+    <script type="module">
+      // This would normally be imported from the package
+      // import { ParallaxCarousel } from '@maxbertram/parallax-carousel';
+      // import '@maxbertram/parallax-carousel/dist/carousel.css';
+
+      // For local development/testing:
+      import { ParallaxCarousel } from "../src/index.js";
+
+      const carousel = new ParallaxCarousel({
+        container: "#carousel",
+
+        images: [
+          {
+            src: "https://picsum.photos/2200/1080?random=1",
+            title: "Beautiful Landscape",
+            href: "/article/1",
+          },
+          {
+            src: "https://picsum.photos/2200/1080?random=2",
+            title: "Mountain Vista",
+            href: "/article/2",
+          },
+          {
+            src: "https://picsum.photos/2200/1080?random=3",
+            title: "Ocean Waves",
+            href: "/article/3",
+          },
+          {
+            src: "https://picsum.photos/2200/1080?random=4",
+            title: "Urban Jungle",
+            href: "/article/4",
+          },
+          {
+            src: "https://picsum.photos/2200/1080?random=5",
+            title: "Desert Sunset",
+            href: "/article/5",
+          },
+        ],
+
+        features: {
+          showIndex: true,
+          showTitles: true,
+          enableZoom: true,
+        },
+
+        callbacks: {
+          onInit: () => {
+            console.log("Carousel initialized!");
+          },
+          onImageClick: (index, image) => {
+            console.log("Clicked image:", index, image.config.title);
+          },
+          onZoomIn: (index) => {
+            console.log("Zoomed in to image:", index);
+          },
+        },
+      });
+
+      // Expose to window for debugging
+      window.carousel = carousel;
+    </script>
+  </body>
+</html>

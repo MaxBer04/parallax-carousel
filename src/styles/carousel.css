@@ -1,0 +1,91 @@
+/**
+ * ParallaxCarousel Base Styles
+ * Import this file when using the carousel
+ */
+
+/* Base body styles for carousel container */
+.parallax-carousel-container {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #141414;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+    Arial, sans-serif;
+  color: #fff;
+  position: relative;
+  width: 100%;
+  height: 100vh;
+}
+
+/* Canvas element styles */
+.parallax-carousel-container canvas {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+/* Base link styles */
+.parallax-carousel-container a {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Title list styles */
+.parallax-carousel-container ul,
+.parallax-carousel-container li {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* Title container is created dynamically by the carousel */
+#title-list {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+#title-list li {
+  position: absolute;
+  left: 50%;
+  top: calc(50% - 2.0833vw);
+  transform: translateX(-50%);
+}
+
+#title-list li .title {
+  font-size: 3.125vw;
+  line-height: 4.2708vw;
+  letter-spacing: 0.015em;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+#title-list li .title a {
+  will-change: transform;
+  font-weight: 300;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Optional: Full-page mode (when carousel is only content) */
+body.parallax-carousel-fullpage {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #141414;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  #title-list li .title {
+    font-size: 5vw;
+    line-height: 6.5vw;
+  }
+}

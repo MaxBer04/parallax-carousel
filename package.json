@@ -1,0 +1,45 @@
+{
+  "name": "@maxbertram/parallax-carousel",
+  "version": "1.0.0",
+  "description": "A canvas-based parallax image carousel with smooth animations and zoom functionality",
+  "main": "dist/index.js",
+  "module": "dist/index.esm.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build && npm run build:types",
+    "build:types": "echo 'TypeScript types generation placeholder'",
+    "preview": "vite preview",
+    "prepublishOnly": "npm run build"
+  },
+  "keywords": [
+    "carousel",
+    "parallax",
+    "canvas",
+    "animation",
+    "slider",
+    "image-gallery",
+    "zoom"
+  ],
+  "author": "Max Bertram",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/MaxBer04/parallax-carousel.git"
+  },
+  "publishConfig": {
+    "@maxbertram:registry": "https://npm.pkg.github.com"
+  },
+  "devDependencies": {
+    "vite": "^5.0.0"
+  },
+  "peerDependencies": {},
+  "engines": {
+    "node": ">=16.0.0"
+  }
+}

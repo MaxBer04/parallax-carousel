@@ -1,0 +1,41 @@
+# Source files
+src/
+examples/
+
+# Development files
+*.log
+*.lock
+node_modules/
+.vscode/
+.idea/
+.claude/
+
+# Git
+.git/
+.gitignore
+
+# Config files
+vite.config.js
+tsconfig.json
+.eslintrc
+.prettierrc
+
+# Documentation (keep only README in package)
+docs/
+
+# Test files
+test/
+tests/
+*.test.js
+*.spec.js
+
+# CI/CD
+.github/
+.gitlab-ci.yml
+.travis.yml
+
+# Misc
+.DS_Store
+*.swp
+*.swo
+*~
