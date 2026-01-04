@@ -1,5 +1,5 @@
 /**
- * @maxbertram/parallax-carousel
+ * @maxber04/parallax-carousel
  * A canvas-based parallax image carousel with smooth animations
  *
  * @version 1.0.0
