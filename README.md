@@ -1,4 +1,4 @@
-# @maxbertram/parallax-carousel
+# @maxber04/parallax-carousel
 
 A canvas-based parallax image carousel with smooth animations, zoom functionality, and extensive customization options.
 
@@ -17,19 +17,19 @@ A canvas-based parallax image carousel with smooth animations, zoom functionalit
 ## Installation
 
 ```bash
-npm install @maxbertram/parallax-carousel
+npm install @maxber04/parallax-carousel
 ```
 
 Or with yarn:
 ```bash
-yarn add @maxbertram/parallax-carousel
+yarn add @maxber04/parallax-carousel
 ```
 
 ## Basic Usage
 
 ```javascript
-import { ParallaxCarousel } from '@maxbertram/parallax-carousel';
-import '@maxbertram/parallax-carousel/dist/carousel.css';
+import { ParallaxCarousel } from '@maxber04/parallax-carousel';
+import '@maxber04/parallax-carousel/dist/carousel.css';
 
 const carousel = new ParallaxCarousel({
   container: '#carousel-container',
